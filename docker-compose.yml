@@ -14,7 +14,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks:
-      - pokesmash
+      - travel-guide
 
   adminer:
     image: adminer
@@ -22,7 +22,7 @@ services:
     ports:
       - "8080:8080"
     networks:
-      - pokesmash
+      - travel-guide
 
   redis:
     container_name: redis
@@ -34,11 +34,11 @@ services:
     volumes:
       - redis_data:/data
     networks:
-      - pokesmash
+      - travel-guide
 
 volumes:
   postgres_data:
   redis_data:
 
 networks:
-  pokesmash:
+  travel-guide:
