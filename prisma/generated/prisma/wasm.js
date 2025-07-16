@@ -131,6 +131,109 @@ exports.Prisma.UserScalarFieldEnum = {
   role: 'role'
 };
 
+exports.Prisma.AttractionScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  categoryId: 'categoryId',
+  locationId: 'locationId',
+  averageRating: 'averageRating',
+  visitDuration: 'visitDuration',
+  entryFee: 'entryFee',
+  website: 'website',
+  phone: 'phone',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.LocationScalarFieldEnum = {
+  id: 'id',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  address: 'address',
+  city: 'city',
+  country: 'country',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.CategoryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.MediaScalarFieldEnum = {
+  id: 'id',
+  attractionId: 'attractionId',
+  url: 'url',
+  type: 'type',
+  caption: 'caption',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ReviewScalarFieldEnum = {
+  id: 'id',
+  attractionId: 'attractionId',
+  userId: 'userId',
+  rating: 'rating',
+  comment: 'comment',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.TagScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.OperatingHoursScalarFieldEnum = {
+  id: 'id',
+  attractionId: 'attractionId',
+  dayOfWeek: 'dayOfWeek',
+  openTime: 'openTime',
+  closeTime: 'closeTime',
+  isClosed: 'isClosed',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.RouteScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  userId: 'userId',
+  isGenerated: 'isGenerated',
+  duration: 'duration',
+  distance: 'distance',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.RouteRatingScalarFieldEnum = {
+  id: 'id',
+  routeId: 'routeId',
+  userId: 'userId',
+  rating: 'rating',
+  comment: 'comment',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.AttractionToTagScalarFieldEnum = {
+  attractionId: 'attractionId',
+  tagId: 'tagId'
+};
+
+exports.Prisma.RouteToAttractionScalarFieldEnum = {
+  routeId: 'routeId',
+  attractionId: 'attractionId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -147,11 +250,23 @@ exports.Prisma.NullsOrder = {
 };
 exports.Roles = exports.$Enums.Roles = {
   USER: 'USER',
-  ADMIN: 'ADMIN'
+  ADMIN: 'ADMIN',
+  SUPERUSER: 'SUPERUSER'
 };
 
 exports.Prisma.ModelName = {
-  User: 'User'
+  User: 'User',
+  Attraction: 'Attraction',
+  Location: 'Location',
+  Category: 'Category',
+  Media: 'Media',
+  Review: 'Review',
+  Tag: 'Tag',
+  OperatingHours: 'OperatingHours',
+  Route: 'Route',
+  RouteRating: 'RouteRating',
+  AttractionToTag: 'AttractionToTag',
+  RouteToAttraction: 'RouteToAttraction'
 };
 
 /**
