@@ -62,7 +62,7 @@ export class AuthService {
     const user = await this.userService.findOne(idOrEmail);
 
     if (!user) {
-      throw new NotFoundException('User not found');
+      throw new UnauthorizedException();
     }
 
     return plainToClass(UserDto, user);

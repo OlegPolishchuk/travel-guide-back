@@ -7,6 +7,20 @@ import { UserDto } from '@/src/modules/user/dto/user.dto';
 import { paginate } from '@/src/utils/paginate.utils';
 import UserCreateInput = Prisma.UserCreateInput;
 
+const USER_FIELDS_WITHOUT_PASS = {
+  email: true,
+  password: false,
+  name: true,
+  id: true,
+  createdAt: true,
+  avatar: true,
+  role: true,
+  updatedAt: true,
+  routes: true,
+  reviews: true,
+  routeRatings: true,
+};
+
 @Injectable()
 export class UserService {
   constructor(private prismaService: PrismaService) {}
@@ -36,11 +50,15 @@ export class UserService {
   findAll(paginationDto: PaginationDto) {
     const { page = 1, limit = DEFAULT_LIMIT, ...restParams } = paginationDto;
 
-    return paginate<UserDto>(this.prismaService.user, {
-      page,
-      limit,
-      ...restParams,
-    });
+    return paginate<UserDto>(
+      this.prismaService.user,
+      {
+        page,
+        limit,
+        ...restParams,
+      },
+      { select: USER_FIELDS_WITHOUT_PASS },
+    );
   }
 
   delete(id: string) {

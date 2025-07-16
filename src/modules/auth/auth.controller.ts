@@ -99,8 +99,9 @@ export class AuthController {
   })
   @ApiResponse({ status: 404, description: 'User not found' })
   @ApiResponse({ status: 401, description: 'Unauthorized' })
-  @Get('logout')
+  // @UseGuards(LocalGuard)
   @HttpCode(200)
+  @Get('logout')
   logout(@Req() request: Request) {
     return this.authService.logout(request);
   }

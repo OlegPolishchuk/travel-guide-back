@@ -8,10 +8,11 @@ export class LocalGuard extends AuthGuard('local') {
   }
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
+    console.group('Local Guard');
+
     const result: boolean = (await super.canActivate(context)) as boolean;
     await super.logIn(context.switchToHttp().getRequest());
 
-    console.group('Local Guard');
     console.log('result =>', result);
     console.groupEnd();
 

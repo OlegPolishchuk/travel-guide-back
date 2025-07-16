@@ -32,3 +32,18 @@ export interface ListResponse<ItemsType> {
   page: number;
   items: ItemsType[];
 }
+
+export class ListResponseDto<T> {
+  @ApiProperty({ type: Number })
+  total: number;
+
+  @ApiProperty({ type: Number })
+  limit: number;
+
+  @ApiProperty({ type: Number })
+  page: number;
+
+  @ApiProperty({ type: () => Object, isArray: true })
+  @Type(() => Object)
+  items: T[];
+}
