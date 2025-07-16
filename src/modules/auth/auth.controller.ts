@@ -70,9 +70,6 @@ export class AuthController {
     @Body() createUserDto: CreateUserDto,
     @Session() session: Session,
   ): Promise<UserDto> {
-    console.group('Controller LOGIN');
-    console.log('createUserDto =>', createUserDto);
-    console.groupEnd();
     const user = await this.authService.login(createUserDto);
 
     session.user_id = user.id;
@@ -95,6 +92,13 @@ export class AuthController {
     return this.authService.getUser(session.user_id);
   }
 
+  @ApiOperation({ summary: 'Logout User' })
+  @ApiResponse({
+    status: 200,
+    description: 'Logout successful',
+  })
+  @ApiResponse({ status: 404, description: 'User not found' })
+  @ApiResponse({ status: 401, description: 'Unauthorized' })
   @Get('logout')
   @HttpCode(200)
   logout(@Req() request: Request) {
