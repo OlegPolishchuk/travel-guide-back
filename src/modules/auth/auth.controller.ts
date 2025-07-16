@@ -2,7 +2,7 @@ import {
   Body,
   Controller,
   Get,
-  HttpStatus,
+  HttpCode,
   Post,
   Req,
   Session,
@@ -96,12 +96,8 @@ export class AuthController {
   }
 
   @Get('logout')
+  @HttpCode(200)
   logout(@Req() request: Request) {
-    request.session.destroy(() => {
-      return {
-        message: 'Logout successful',
-        statusCode: HttpStatus.OK,
-      };
-    });
+    return this.authService.logout(request);
   }
 }

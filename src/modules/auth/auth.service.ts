@@ -1,10 +1,12 @@
 import {
+  BadRequestException,
   Injectable,
   NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import { plainToClass } from 'class-transformer';
+import { Request } from 'express';
 
 import { CreateUserDto } from '@/src/modules/auth/dto/create-user.dto';
 import { UserDto } from '@/src/modules/user/dto/user.dto';
@@ -64,6 +66,22 @@ export class AuthService {
     }
 
     return plainToClass(UserDto, user);
+  }
+
+  async logout(request: Request) {
+    return new Promise((resolve, reject) => {
+      request.session.destroy((err) => {
+        if (err) {
+          console.error('Session destroy error:', err);
+          return reject(new BadRequestException('Logout failed'));
+        }
+
+        resolve({
+          message: 'Logout successful',
+          statusCode: 200,
+        });
+      });
+    });
   }
 
   private async hashPassword(password: string) {
