@@ -2,10 +2,12 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/generated/prisma';
 
 import { DEFAULT_LIMIT, PaginationDto } from '@/src/dto/pagination.dto';
+import { DB_ERROR_MESSAGE } from '@/src/modules/admin/users/constants/error-messages';
 import { PrismaService } from '@/src/modules/core/prisma/prisma.service';
 import { UserDto } from '@/src/modules/user/dto/user.dto';
 import { paginate } from '@/src/utils/paginate.utils';
 import UserCreateInput = Prisma.UserCreateInput;
+import UserUpdateInput = Prisma.UserUpdateInput;
 
 const USER_FIELDS_WITHOUT_PASS = {
   email: true,
@@ -61,9 +63,22 @@ export class UserService {
     );
   }
 
-  delete(id: string) {
-    return this.prismaService.user.delete({
-      where: { id },
+  async delete(id: string) {
+    try {
+      return await this.prismaService.user.delete({
+        where: { id },
+        select: USER_FIELDS_WITHOUT_PASS,
+      });
+    } catch (err) {
+      throw new BadRequestException(DB_ERROR_MESSAGE[err.code]);
+    }
+  }
+
+  update(userId: string, userData: UserUpdateInput) {
+    return this.prismaService.user.update({
+      where: { id: userId },
+      data: userData,
+      select: USER_FIELDS_WITHOUT_PASS,
     });
   }
 }

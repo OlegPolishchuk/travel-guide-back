@@ -16,7 +16,28 @@ export class AdminUsersService extends UserService {
     return plainToClass(UserDto, user);
   }
 
-  deleteUser(idOrEmail: string) {
-    return this.delete(idOrEmail);
+  deleteUser(id: string) {
+    return this.delete(id);
+  }
+
+  createUser(email: string) {
+    const pass = this._generatePassword();
+
+    return this.create({ email, password: pass });
+  }
+
+  private _generatePassword() {
+    const chars =
+      'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let password = '';
+
+    const length = Math.floor(Math.random() * chars.length);
+
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * chars.length);
+      password += chars[randomIndex];
+    }
+
+    return password;
   }
 }

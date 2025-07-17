@@ -1,24 +1,30 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Roles } from '@prisma/generated/prisma';
 import { Exclude } from 'class-transformer';
+import { IsEmail, IsEnum, IsOptional, MinLength } from 'class-validator';
 
 export class UserDto {
   @ApiProperty()
   id: string;
 
   @ApiProperty()
+  @IsEmail()
   email: string;
 
   @Exclude()
+  @MinLength(3)
   password: string;
 
-  @ApiProperty()
+  @ApiProperty({ enum: Roles, enumName: 'Roles' })
+  @IsEnum(Roles, { message: 'role must be a valid Roles enum value' })
   role: Roles;
 
-  @ApiProperty()
+  @ApiProperty({ type: String, nullable: true, required: false })
+  @IsOptional()
   name?: string | null;
 
-  @ApiProperty()
+  @ApiProperty({ type: String, nullable: true, required: false })
+  @IsOptional()
   avatar?: string | null;
 
   @ApiProperty()

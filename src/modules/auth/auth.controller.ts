@@ -11,7 +11,10 @@ import {
 import { ApiBody, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { Request } from 'express';
 
-import { CreateUserDto } from '@/src/modules/auth/dto/create-user.dto';
+import {
+  CreateUserDto,
+  CreateUserDtoSwagger,
+} from '@/src/modules/auth/dto/create-user.dto';
 import { LocalGuard } from '@/src/modules/auth/guards/local.guard';
 import { UserDto } from '@/src/modules/user/dto/user.dto';
 
@@ -23,7 +26,7 @@ export class AuthController {
 
   @ApiOperation({ summary: 'Register new User' })
   @ApiBody({
-    type: CreateUserDto,
+    type: CreateUserDtoSwagger,
     examples: {
       default: {
         summary: 'Examples',
@@ -35,11 +38,12 @@ export class AuthController {
     },
   })
   @ApiResponse({
-    status: 200,
+    status: 201,
     description: 'Create new User',
     type: UserDto,
   })
   @ApiResponse({ status: 404, description: 'User not found' })
+  @HttpCode(201)
   @Post('register')
   register(@Body() createUserDto: CreateUserDto): Promise<UserDto> {
     return this.authService.register(createUserDto);
