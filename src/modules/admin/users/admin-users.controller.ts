@@ -9,7 +9,7 @@ import {
   Put,
   Query,
 } from '@nestjs/common';
-import { ApiBody, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Roles } from '@prisma/generated/prisma';
 
 import { RolesDecorator } from '@/src/decorators/roles.decorator';
@@ -22,6 +22,7 @@ import { UserDto } from '@/src/modules/user/dto/user.dto';
 
 import { AdminUsersService } from './admin-users.service';
 
+@ApiTags('Admin Users')
 @RolesDecorator(Roles.ADMIN, Roles.SUPERUSER)
 @Controller('admin/users')
 export class AdminUsersController {

@@ -254,19 +254,6 @@ exports.Roles = exports.$Enums.Roles = {
   SUPERUSER: 'SUPERUSER'
 };
 
-exports.TouristPlaceCategory = exports.$Enums.TouristPlaceCategory = {
-  NATURE: 'NATURE',
-  CULTURAL_HISTORICAL: 'CULTURAL_HISTORICAL',
-  ENTERTAINMENT_PARK: 'ENTERTAINMENT_PARK',
-  GASTRONOMY: 'GASTRONOMY',
-  BEACH_RESORT: 'BEACH_RESORT',
-  SKI_RESORT: 'SKI_RESORT',
-  RELIGIOUS: 'RELIGIOUS',
-  URBAN: 'URBAN',
-  ADVENTURE: 'ADVENTURE',
-  ECO_AGRO: 'ECO_AGRO'
-};
-
 exports.Prisma.ModelName = {
   User: 'User',
   Attraction: 'Attraction',

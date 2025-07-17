@@ -1,0 +1,922 @@
+[
+  {
+    "location": {
+      "city": "Несвиж",
+      "country": "Belarus",
+      "latitude": 53.2230,
+      "longitude": 26.6917,
+      "address": "Несвижский замок, Минская область",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    },
+    "attraction": {
+      "name": "Несвижский замок",
+      "description": "Родовой замок Радзивиллов, памятник ЮНЕСКО, архитектурный комплекс XVI века с дворцом, парками и богатой историей.",
+      "categoryId": 1,
+      "averageRating": 4.8,
+      "visitDuration": 2.5,
+      "entryFee": 15.0,
+      "website": "https://niasvizh.by",
+      "phone": "+375 1770 52061",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    }
+  },
+  {
+    "location": {
+      "city": "Мир",
+      "country": "Belarus",
+      "latitude": 53.4512,
+      "longitude": 26.4726,
+      "address": "Мирский замок, Гродненская область",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    },
+    "attraction": {
+      "name": "Мирский замок",
+      "description": "Средневековый замок XVI века, памятник ЮНЕСКО, известен Золотым залом и неоготическим стилем.",
+      "categoryId": 1,
+      "averageRating": 4.7,
+      "visitDuration": 2.0,
+      "entryFee": 14.0,
+      "website": "https://mirzamak.by",
+      "phone": "+375 1596 24531",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    }
+  },
+  {
+    "location": {
+      "city": "Брест",
+      "country": "Belarus",
+      "latitude": 52.0976,
+      "longitude": 23.7341,
+      "address": "Брестская крепость, Брестская область",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    },
+    "attraction": {
+      "name": "Брестская крепость",
+      "description": "Мемориальный комплекс, посвященный обороне 1941 года, включает цитадель, музеи и храм.",
+      "categoryId": 5,
+      "averageRating": 4.9,
+      "visitDuration": 3.0,
+      "entryFee": 8.0,
+      "website": "https://brest-fortress.by",
+      "phone": "+375 162 200036",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    }
+  },
+  {
+    "location": {
+      "city": "Каменец",
+      "country": "Belarus",
+      "latitude": 52.4000,
+      "longitude": 23.8194,
+      "address": "Беловежская пуща, Брестская область",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    },
+    "attraction": {
+      "name": "Беловежская пуща",
+      "description": "Старейший заповедник Европы, дом зубров, включает Музей природы и экскурсии по лесам.",
+      "categoryId": 3,
+      "averageRating": 4.6,
+      "visitDuration": 4.0,
+      "entryFee": 10.0,
+      "website": "https://npbp.by",
+      "phone": "+375 1631 56398",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    }
+  },
+  {
+    "location": {
+      "city": "Полоцк",
+      "country": "Belarus",
+      "latitude": 55.4870,
+      "longitude": 28.7856,
+      "address": "Софийский собор, Витебская область",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    },
+    "attraction": {
+      "name": "Софийский собор",
+      "description": "Христианская святыня XI века, перестроенная в стиле виленского барокко, с фрагментами старинных росписей.",
+      "categoryId": 4,
+      "averageRating": 4.5,
+      "visitDuration": 1.5,
+      "entryFee": 5.0,
+      "website": "https://sophia.polotsk.museum.by",
+      "phone": "+375 214 425123",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    }
+  },
+  {
+    "location": {
+      "city": "Хатынь",
+      "country": "Belarus",
+      "latitude": 54.3350,
+      "longitude": 27.9417,
+      "address": "Мемориальный комплекс Хатынь, Минская область",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    },
+    "attraction": {
+      "name": "Мемориальный комплекс Хатынь",
+      "description": "Мемориал, посвященный жертвам Великой Отечественной войны, символ трагедии сожженных деревень.",
+      "categoryId": 5,
+      "averageRating": 4.9,
+      "visitDuration": 2.0,
+      "entryFee": 0.0,
+      "website": "https://khatyn.by",
+      "phone": "+375 1774 55707",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    }
+  },
+  {
+    "location": {
+      "city": "Минск",
+      "country": "Belarus",
+      "latitude": 53.9172,
+      "longitude": 27.5827,
+      "address": "пр. Победителей 8, Минск",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    },
+    "attraction": {
+      "name": "Национальная библиотека Беларуси",
+      "description": "Современное здание в форме алмаза, крупнейшая библиотека страны с обзорной площадкой.",
+      "categoryId": 2,
+      "averageRating": 4.6,
+      "visitDuration": 1.5,
+      "entryFee": 10.0,
+      "website": "https://nlb.by",
+      "phone": "+375 17 293 29 80",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    }
+  },
+  {
+    "location": {
+      "city": "Ружаны",
+      "country": "Belarus",
+      "latitude": 52.8633,
+      "longitude": 24.8936,
+      "address": "Ружанский дворец, Брестская область",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    },
+    "attraction": {
+      "name": "Ружанский дворец",
+      "description": "Руины резиденции Сапег, известной как 'белорусский Версаль', с восстановленным входным корпусом.",
+      "categoryId": 1,
+      "averageRating": 4.4,
+      "visitDuration": 1.5,
+      "entryFee": 6.0,
+      "website": "https://ruzhany.by",
+      "phone": "+375 1632 32222",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    }
+  },
+  {
+    "location": {
+      "city": "Гомель",
+      "country": "Belarus",
+      "latitude": 52.4346,
+      "longitude": 30.9754,
+      "address": "ул. Советская 12, Гомель",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    },
+    "attraction": {
+      "name": "Гомельский дворцово-парковый ансамбль",
+      "description": "Дворец Румянцевых-Паскевичей XVIII века с музеем и живописным парком на берегу реки Сож.",
+      "categoryId": 1,
+      "averageRating": 4.7,
+      "visitDuration": 2.0,
+      "entryFee": 7.0,
+      "website": "https://gomelpalace.by",
+      "phone": "+375 232 770101",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    }
+  },
+  {
+    "location": {
+      "city": "Столин",
+      "country": "Belarus",
+      "latitude": 51.8911,
+      "longitude": 26.8465,
+      "address": "Национальный парк Припятский, Брестская область",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    },
+    "attraction": {
+      "name": "Национальный парк Припятский",
+      "description": "Заповедник с уникальной флорой и фауной Полесья, известный как 'белорусская Амазонка'.",
+      "categoryId": 3,
+      "averageRating": 4.5,
+      "visitDuration": 4.0,
+      "entryFee": 8.0,
+      "website": "https://npp.by",
+      "phone": "+375 1655 21234",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    }
+  },
+  {
+    "location": {
+      "city": "Минск",
+      "country": "Belarus",
+      "latitude": 53.9025,
+      "longitude": 27.5615,
+      "address": "Верхний город, Минск",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    },
+    "attraction": {
+      "name": "Верхний город",
+      "description": "Исторический центр Минска с архитектурой XVII-XIX веков, кафе и культурными событиями.",
+      "categoryId": 5,
+      "averageRating": 4.6,
+      "visitDuration": 2.0,
+      "entryFee": 0.0,
+      "website": null,
+      "phone": null,
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    }
+  },
+  {
+    "location": {
+      "city": "Лида",
+      "country": "Belarus",
+      "latitude": 53.8944,
+      "longitude": 25.3026,
+      "address": "Лидский замок, Гродненская область",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    },
+    "attraction": {
+      "name": "Лидский замок",
+      "description": "Средневековый замок XIV века, построенный князем Гедимином, с музеем и фестивалями.",
+      "categoryId": 1,
+      "averageRating": 4.4,
+      "visitDuration": 1.5,
+      "entryFee": 6.0,
+      "website": "https://lidazamak.by",
+      "phone": "+375 154 527060",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    }
+  },
+  {
+    "location": {
+      "city": "Витебск",
+      "country": "Belarus",
+      "latitude": 55.1912,
+      "longitude": 30.2049,
+      "address": "Музей Марка Шагала, Витебская область",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    },
+    "attraction": {
+      "name": "Музей Марка Шагала",
+      "description": "Музей, посвященный жизни и творчеству художника Марка Шагала, родившегося в Витебске.",
+      "categoryId": 2,
+      "averageRating": 4.5,
+      "visitDuration": 1.0,
+      "entryFee": 5.0,
+      "website": "https://shagal.vitebsk.museum.by",
+      "phone": "+375 212 377123",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    }
+  },
+  {
+    "location": {
+      "city": "Могилев",
+      "country": "Belarus",
+      "latitude": 53.8941,
+      "longitude": 30.3310,
+      "address": "Буйничское поле, Могилевская область",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    },
+    "attraction": {
+      "name": "Мемориальный комплекс Буйничское поле",
+      "description": "Мемориал, посвященный сражению 1941 года, с музеем и смотровой площадкой.",
+      "categoryId": 5,
+      "averageRating": 4.8,
+      "visitDuration": 2.0,
+      "entryFee": 4.0,
+      "website": "https://buinichskoe-pole.by",
+      "phone": "+375 222 741234",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    }
+  },
+  {
+    "location": {
+      "city": "Гродно",
+      "country": "Belarus",
+      "latitude": 53.6783,
+      "longitude": 23.8310,
+      "address": "Коложская церковь, Гродненская область",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    },
+    "attraction": {
+      "name": "Коложская церковь",
+      "description": "Древнейшая действующая церковь XII века в Гродно, памятник архитектуры.",
+      "categoryId": 4,
+      "averageRating": 4.6,
+      "visitDuration": 1.0,
+      "entryFee": 3.0,
+      "website": null,
+      "phone": "+375 152 771234",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    }
+  },
+  {
+    "location": {
+      "city": "Коссово",
+      "country": "Belarus",
+      "latitude": 52.7589,
+      "longitude": 25.1556,
+      "address": "Коссовский замок, Брестская область",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    },
+    "attraction": {
+      "name": "Коссовский замок",
+      "description": "Неоготический дворец XIX века, резиденция Пусловских, известный своими башнями и парком.",
+      "categoryId": 1,
+      "averageRating": 4.5,
+      "visitDuration": 2.0,
+      "entryFee": 7.0,
+      "website": "https://kossovo.by",
+      "phone": "+375 1633 51234",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    }
+  },
+  {
+    "location": {
+      "city": "Новогрудок",
+      "country": "Belarus",
+      "latitude": 53.5942,
+      "longitude": 25.8197,
+      "address": "Новогрудский замок, Гродненская область",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    },
+    "attraction": {
+      "name": "Новогрудский замок",
+      "description": "Руины средневекового замка XIII века, связанного с Великим княжеством Литовским.",
+      "categoryId": 1,
+      "averageRating": 4.3,
+      "visitDuration": 1.5,
+      "entryFee": 4.0,
+      "website": "https://novogrudok.by",
+      "phone": "+375 1597 22345",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    }
+  },
+  {
+    "location": {
+      "city": "Минск",
+      "country": "Belarus",
+      "latitude": 53.9051,
+      "longitude": 27.5541,
+      "address": "Национальный художественный музей, Минск",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    },
+    "attraction": {
+      "name": "Национальный художественный музей",
+      "description": "Крупнейший музей изобразительного искусства Беларуси с коллекцией от средневековья до современности.",
+      "categoryId": 2,
+      "averageRating": 4.7,
+      "visitDuration": 2.0,
+      "entryFee": 6.0,
+      "website": "https://artmuseum.by",
+      "phone": "+375 17 327 12 34",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    }
+  },
+  {
+    "location": {
+      "city": "Витебск",
+      "country": "Belarus",
+      "latitude": 55.1927,
+      "longitude": 30.2064,
+      "address": "Витебский областной краеведческий музей, Витебская область",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    },
+    "attraction": {
+      "name": "Витебский областной краеведческий музей",
+      "description": "Музей в здании бывшей ратуши, посвященный истории Витебска и региона.",
+      "categoryId": 2,
+      "averageRating": 4.4,
+      "visitDuration": 1.5,
+      "entryFee": 4.0,
+      "website": "https://vitebsk.museum.by",
+      "phone": "+375 212 364567",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    }
+  },
+  {
+    "location": {
+      "city": "Браслав",
+      "country": "Belarus",
+      "latitude": 55.6411,
+      "longitude": 27.0418,
+      "address": "Браславские озера, Витебская область",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    },
+    "attraction": {
+      "name": "Национальный парк Браславские озера",
+      "description": "Живописный комплекс из 30 озер, идеальный для рыбалки, каякинга и пеших прогулок.",
+      "categoryId": 3,
+      "averageRating": 4.7,
+      "visitDuration": 5.0,
+      "entryFee": 5.0,
+      "website": "https://braslavpark.by",
+      "phone": "+375 2153 51234",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    }
+  },
+  {
+    "location": {
+      "city": "Нарочь",
+      "country": "Belarus",
+      "latitude": 54.9100,
+      "longitude": 26.7097,
+      "address": "Национальный парк Нарочанский, Минская область",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    },
+    "attraction": {
+      "name": "Национальный парк Нарочанский",
+      "description": "Крупнейшее озеро Беларуси и природный заповедник с пляжами и туристическими тропами.",
+      "categoryId": 3,
+      "averageRating": 4.6,
+      "visitDuration": 4.0,
+      "entryFee": 6.0,
+      "website": "https://naroch.by",
+      "phone": "+375 1797 41234",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    }
+  },
+  {
+    "location": {
+      "city": "Минск",
+      "country": "Belarus",
+      "latitude": 54.0123,
+      "longitude": 27.5291,
+      "address": "Голубые озера, Минская область",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    },
+    "attraction": {
+      "name": "Голубые озера",
+      "description": "Уникальный природный комплекс с кристально чистыми озерами и хвойными лесами.",
+      "categoryId": 3,
+      "averageRating": 4.8,
+      "visitDuration": 3.0,
+      "entryFee": 3.0,
+      "website": null,
+      "phone": null,
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    }
+  },
+  {
+    "location": {
+      "city": "Жировичи",
+      "country": "Belarus",
+      "latitude": 53.0133,
+      "longitude": 25.3448,
+      "address": "Жировичский монастырь, Гродненская область",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    },
+    "attraction": {
+      "name": "Жировичский монастырь",
+      "description": "Один из крупнейших православных монастырей Беларуси, центр паломничества.",
+      "categoryId": 4,
+      "averageRating": 4.7,
+      "visitDuration": 1.5,
+      "entryFee": 0.0,
+      "website": "https://zhirovichi.by",
+      "phone": "+375 1564 31234",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    }
+  },
+  {
+    "location": {
+      "city": "Минск",
+      "country": "Belarus",
+      "latitude": 53.8937,
+      "longitude": 27.5477,
+      "address": "Площадь Независимости, Минск",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    },
+    "attraction": {
+      "name": "Площадь Независимости",
+      "description": "Центральная площадь Минска с Домом правительства и памятником Ленину.",
+      "categoryId": 5,
+      "averageRating": 4.5,
+      "visitDuration": 1.0,
+      "entryFee": 0.0,
+      "website": null,
+      "phone": null,
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    }
+  },
+  {
+    "location": {
+      "city": "Дудутки",
+      "country": "Belarus",
+      "latitude": 53.6768,
+      "longitude": 27.6921,
+      "address": "Музейный комплекс Дудутки, Минская область",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    },
+    "attraction": {
+      "name": "Музейный комплекс Дудутки",
+      "description": "Этнографический музей под открытым небом, демонстрирующий белорусскую культуру и ремесла.",
+      "categoryId": 5,
+      "averageRating": 4.6,
+      "visitDuration": 3.0,
+      "entryFee": 8.0,
+      "website": "https://dudutki.by",
+      "phone": "+375 1713 51234",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    }
+  },
+  {
+    "location": {
+      "city": "Гольшаны",
+      "country": "Belarus",
+      "latitude": 54.2612,
+      "longitude": 26.0157,
+      "address": "Гольшанский замок, Гродненская область",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    },
+    "attraction": {
+      "name": "Гольшанский замок",
+      "description": "Руины замка XVI века, вдохновившего на легенды о 'Черной даме' и романы Владимира Короткевича.",
+      "categoryId": 1,
+      "averageRating": 4.4,
+      "visitDuration": 1.5,
+      "entryFee": 5.0,
+      "website": "https://golshany.by",
+      "phone": "+375 1593 41234",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    }
+  },
+  {
+    "location": {
+      "city": "Крево",
+      "country": "Belarus",
+      "latitude": 54.3111,
+      "longitude": 26.2833,
+      "address": "Кревский замок, Гродненская область",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    },
+    "attraction": {
+      "name": "Кревский замок",
+      "description": "Руины замка XIV века, место подписания Кревской унии 1385 года.",
+      "categoryId": 1,
+      "averageRating": 4.2,
+      "visitDuration": 1.0,
+      "entryFee": 3.0,
+      "website": null,
+      "phone": null,
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    }
+  },
+  {
+    "location": {
+      "city": "Бобруйск",
+      "country": "Belarus",
+      "latitude": 53.1449,
+      "longitude": 29.2214,
+      "address": "Бобруйская крепость, Могилевская область",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    },
+    "attraction": {
+      "name": "Бобруйская крепость",
+      "description": "Историческая крепость XIX века, сыгравшая важную роль в войне 1812 года.",
+      "categoryId": 1,
+      "averageRating": 4.3,
+      "visitDuration": 1.5,
+      "entryFee": 4.0,
+      "website": "https://bobruisk.by",
+      "phone": "+375 225 71234",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    }
+  },
+  {
+    "location": {
+      "city": "Минск",
+      "country": "Belarus",
+      "latitude": 53.9006,
+      "longitude": 27.5589,
+      "address": "Музей Великой Отечественной войны, Минск",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    },
+    "attraction": {
+      "name": "Музей Великой Отечественной войны",
+      "description": "Современный музей с экспозицией, посвященной Второй мировой войне, с уникальными экспонатами.",
+      "categoryId": 2,
+      "averageRating": 4.8,
+      "visitDuration": 2.5,
+      "entryFee": 7.0,
+      "website": "https://warmuseum.by",
+      "phone": "+375 17 321 12 34",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    }
+  },
+  {
+    "location": {
+      "city": "Гродно",
+      "country": "Belarus",
+      "latitude": 53.6778,
+      "longitude": 23.8291,
+      "address": "Гродненский государственный музей истории и религии, Гродненская область",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    },
+    "attraction": {
+      "name": "Гродненский музей истории и религии",
+      "description": "Музей, рассказывающий об истории и религиозной жизни Гродно, расположенный в историческом здании.",
+      "categoryId": 2,
+      "averageRating": 4.5,
+      "visitDuration": 1.5,
+      "entryFee": 4.0,
+      "website": "https://grodnomuseum.by",
+      "phone": "+375 152 741234",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    }
+  },
+  {
+    "location": {
+      "city": "Полоцк",
+      "country": "Belarus",
+      "latitude": 55.4859,
+      "longitude": 28.7687,
+      "address": "Полоцкий историко-культурный музей-заповедник, Витебская область",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    },
+    "attraction": {
+      "name": "Полоцкий историко-культурный музей",
+      "description": "Музейный комплекс, включающий экспозиции об истории Полоцка, старейшего города Беларуси.",
+      "categoryId": 2,
+      "averageRating": 4.6,
+      "visitDuration": 2.0,
+      "entryFee": 5.0,
+      "website": "https://polotsk.museum.by",
+      "phone": "+375 214 423456",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    }
+  },
+  {
+    "location": {
+      "city": "Августов",
+      "country": "Belarus",
+      "latitude": 53.8439,
+      "longitude": 23.3897,
+      "address": "Августовский канал, Гродненская область",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    },
+    "attraction": {
+      "name": "Августовский канал",
+      "description": "Инженерное сооружение XIX века, популярное место для водных прогулок и велотуризма.",
+      "categoryId": 3,
+      "averageRating": 4.7,
+      "visitDuration": 3.0,
+      "entryFee": 4.0,
+      "website": "https://augustow.by",
+      "phone": "+375 152 31234",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    }
+  },
+  {
+    "location": {
+      "city": "Свислочь",
+      "country": "Belarus",
+      "latitude": 53.0356,
+      "longitude": 24.0983,
+      "address": "Свислочская пуща, Гродненская область",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    },
+    "attraction": {
+      "name": "Свислочская пуща",
+      "description": "Природный заповедник с редкими видами растений и животных, идеальный для экотуризма.",
+      "categoryId": 3,
+      "averageRating": 4.5,
+      "visitDuration": 4.0,
+      "entryFee": 5.0,
+      "website": null,
+      "phone": "+375 1513 51234",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    }
+  },
+  {
+    "location": {
+      "city": "Минск",
+      "country": "Belarus",
+      "latitude": 54.2245,
+      "longitude": 28.4752,
+      "address": "Озеро Селява, Минская область",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    },
+    "attraction": {
+      "name": "Озеро Селява",
+      "description": "Одно из крупнейших озер Беларуси, популярное место для рыбалки и отдыха.",
+      "categoryId": 3,
+      "averageRating": 4.6,
+      "visitDuration": 3.0,
+      "entryFee": 0.0,
+      "website": null,
+      "phone": null,
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    }
+  },
+  {
+    "location": {
+      "city": "Лепель",
+      "country": "Belarus",
+      "latitude": 54.8850,
+      "longitude": 28.6990,
+      "address": "Березинский биосферный заповедник, Витебская область",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    },
+    "attraction": {
+      "name": "Березинский биосферный заповедник",
+      "description": "Заповедник с уникальной экосистемой, включающий болота, леса и реки.",
+      "categoryId": 3,
+      "averageRating": 4.8,
+      "visitDuration": 4.0,
+      "entryFee": 6.0,
+      "website": "https://berezinsky.by",
+      "phone": "+375 2132 51234",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    }
+  },
+  {
+    "location": {
+      "city": "Гродно",
+      "country": "Belarus",
+      "latitude": 53.6865,
+      "longitude": 23.8397,
+      "address": "Старый замок, Гродненская область",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    },
+    "attraction": {
+      "name": "Старый замок в Гродно",
+      "description": "Средневековый замок, резиденция Стефана Батория, с музеем и историческими экспозициями.",
+      "categoryId": 1,
+      "averageRating": 4.6,
+      "visitDuration": 2.0,
+      "entryFee": 6.0,
+      "website": "https://grodnocastle.by",
+      "phone": "+375 152 723456",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    }
+  },
+  {
+    "location": {
+      "city": "Пинск",
+      "country": "Belarus",
+      "latitude": 52.1141,
+      "longitude": 26.1031,
+      "address": "Иезуитский коллегиум, Брестская область",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    },
+    "attraction": {
+      "name": "Иезуитский коллегиум в Пинске",
+      "description": "Историческое здание XVII века, ныне музей и культурный центр Полесья.",
+      "categoryId": 4,
+      "averageRating": 4.5,
+      "visitDuration": 1.5,
+      "entryFee": 4.0,
+      "website": "https://pinsk.by",
+      "phone": "+375 165 31234",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    }
+  },
+  {
+    "location": {
+      "city": "Минск",
+      "country": "Belarus",
+      "latitude": 53.9066,
+      "longitude": 27.5874,
+      "address": "Троицкое предместье, Минск",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    },
+    "attraction": {
+      "name": "Троицкое предместье",
+      "description": "Исторический район Минска с колоритной архитектурой XIX века и уютными кафе.",
+      "categoryId": 5,
+      "averageRating": 4.7,
+      "visitDuration": 2.0,
+      "entryFee": 0.0,
+      "website": null,
+      "phone": null,
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    }
+  },
+  {
+    "location": {
+      "city": "Могилев",
+      "country": "Belarus",
+      "latitude": 53.8989,
+      "longitude": 30.3335,
+      "address": "Могилевская ратуша, Могилевская область",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    },
+    "attraction": {
+      "name": "Могилевская ратуша",
+      "description": "Историческое здание XVII века, символ города, с музеем и смотровой площадкой.",
+      "categoryId": 5,
+      "averageRating": 4.6,
+      "visitDuration": 1.5,
+      "entryFee": 3.0,
+      "website": "https://mogilev.by",
+      "phone": "+375 222 31234",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    }
+  },
+  {
+    "location": {
+      "city": "Слоним",
+      "country": "Belarus",
+      "latitude": 53.0865,
+      "longitude": 25.3163,
+      "address": "Слонимский монастырь, Гродненская область",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    },
+    "attraction": {
+      "name": "Слонимский монастырь",
+      "description": "Православный монастырь XVIII века, важный религиозный и культурный центр.",
+      "categoryId": 4,
+      "averageRating": 4.4,
+      "visitDuration": 1.0,
+      "entryFee": 0.0,
+      "website": null,
+      "phone": "+375 1562 31234",
+      "createdAt": "2025-07-17T12:39:00Z",
+      "updatedAt": "2025-07-17T12:39:00Z"
+    }
+  }
+]

@@ -86,19 +86,6 @@ model Category {
   @@map("categories")
 }
 
-enum TouristPlaceCategory {
-  NATURE // Природные достопримечательности
-  CULTURAL_HISTORICAL // Культурно-исторические достопримечательности
-  ENTERTAINMENT_PARK // Развлекательные и тематические парки
-  GASTRONOMY // Гастрономические направления
-  BEACH_RESORT // Пляжные и курортные зоны
-  SKI_RESORT // Горнолыжные и зимние курорты
-  RELIGIOUS // Религиозные и паломнические места
-  URBAN // Городской туризм
-  ADVENTURE // Экстремальные и приключенческие направления
-  ECO_AGRO // Экотуризм и агротуризм
-}
-
 model Media {
   id           Int        @id @default(autoincrement())
   attractionId Int

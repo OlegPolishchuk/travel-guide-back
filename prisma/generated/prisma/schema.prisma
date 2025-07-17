@@ -15,17 +15,177 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(uuid())
-  email     String   @unique
-  passowrd  String
-  name      String?
-  avatar    String?
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @default(now()) @map("updated_at")
-  role      Roles    @default(USER)
+  id           String        @id @default(uuid())
+  email        String        @unique
+  password     String
+  name         String?
+  avatar       String?
+  createdAt    DateTime      @default(now()) @map("created_at")
+  updatedAt    DateTime      @updatedAt @map("updated_at")
+  role         Roles         @default(USER)
+  routes       Route[]       @relation("UserRoutes")
+  reviews      Review[]      @relation("UserReviews")
+  routeRatings RouteRating[] @relation("UserRouteRatings")
+
+  @@map("users")
 }
 
 enum Roles {
   USER
   ADMIN
+  SUPERUSER
+}
+
+model Attraction {
+  id                Int                 @id @default(autoincrement())
+  name              String
+  description       String?
+  categoryId        Int
+  category          Category            @relation(fields: [categoryId], references: [id])
+  locationId        Int                 @unique
+  location          Location            @relation(fields: [locationId], references: [id])
+  media             Media[]
+  reviews           Review[]            @relation("AttractionReviews")
+  tags              Tag[]               @relation("AttractionToTag")
+  operatingHours    OperatingHours[]
+  routes            Route[]             @relation("RouteToAttraction")
+  averageRating     Float?
+  visitDuration     Float?
+  entryFee          Float?
+  website           String?
+  phone             String?
+  createdAt         DateTime            @default(now()) @map("created_at")
+  updatedAt         DateTime            @updatedAt @map("updated_at")
+  AttractionToTag   AttractionToTag[]
+  RouteToAttraction RouteToAttraction[]
+
+  @@map("attractions")
+}
+
+model Location {
+  id         Int         @id @default(autoincrement())
+  attraction Attraction?
+  latitude   Float
+  longitude  Float
+  address    String?
+  city       String?
+  country    String      @default("Belarus")
+  createdAt  DateTime    @default(now()) @map("created_at")
+  updatedAt  DateTime    @updatedAt @map("updated_at")
+
+  @@map("locations")
+}
+
+model Category {
+  id          Int          @id @default(autoincrement())
+  name        String
+  attractions Attraction[]
+  createdAt   DateTime     @default(now()) @map("created_at")
+  updatedAt   DateTime     @updatedAt @map("updated_at")
+
+  @@map("categories")
+}
+
+model Media {
+  id           Int        @id @default(autoincrement())
+  attractionId Int
+  attraction   Attraction @relation(fields: [attractionId], references: [id])
+  url          String
+  type         String
+  caption      String?
+  createdAt    DateTime   @default(now()) @map("created_at")
+  updatedAt    DateTime   @updatedAt @map("updated_at")
+
+  @@map("media")
+}
+
+model Review {
+  id           Int        @id @default(autoincrement())
+  attractionId Int
+  attraction   Attraction @relation("AttractionReviews", fields: [attractionId], references: [id])
+  userId       String
+  user         User       @relation("UserReviews", fields: [userId], references: [id])
+  rating       Int
+  comment      String?
+  createdAt    DateTime   @default(now()) @map("created_at")
+  updatedAt    DateTime   @updatedAt @map("updated_at")
+
+  @@map("reviews")
+}
+
+model Tag {
+  id              Int               @id @default(autoincrement())
+  name            String
+  attractions     Attraction[]      @relation("AttractionToTag")
+  createdAt       DateTime          @default(now()) @map("created_at")
+  updatedAt       DateTime          @updatedAt @map("updated_at")
+  AttractionToTag AttractionToTag[]
+
+  @@map("tags")
+}
+
+model OperatingHours {
+  id           Int        @id @default(autoincrement())
+  attractionId Int
+  attraction   Attraction @relation(fields: [attractionId], references: [id])
+  dayOfWeek    String
+  openTime     String?
+  closeTime    String?
+  isClosed     Boolean    @default(false)
+  createdAt    DateTime   @default(now()) @map("created_at")
+  updatedAt    DateTime   @updatedAt @map("updated_at")
+
+  @@map("operation_hours")
+}
+
+model Route {
+  id                Int                 @id @default(autoincrement())
+  name              String
+  description       String?
+  userId            String
+  user              User                @relation("UserRoutes", fields: [userId], references: [id])
+  isGenerated       Boolean             @default(false)
+  attractions       Attraction[]        @relation("RouteToAttraction")
+  ratings           RouteRating[]       @relation("RouteRatings")
+  duration          Float?
+  distance          Float?
+  createdAt         DateTime            @default(now()) @map("created_at")
+  updatedAt         DateTime            @updatedAt @map("updated_at")
+  RouteToAttraction RouteToAttraction[]
+
+  @@map("routes")
+}
+
+model RouteRating {
+  id        Int      @id @default(autoincrement())
+  routeId   Int
+  route     Route    @relation("RouteRatings", fields: [routeId], references: [id])
+  userId    String
+  user      User     @relation("UserRouteRatings", fields: [userId], references: [id])
+  rating    Int
+  comment   String?
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("routes_rating")
+}
+
+model AttractionToTag {
+  attractionId Int
+  tagId        Int
+  attraction   Attraction @relation(fields: [attractionId], references: [id])
+  tag          Tag        @relation(fields: [tagId], references: [id])
+
+  @@id([attractionId, tagId])
+  @@map("attraction_to_tag")
+}
+
+model RouteToAttraction {
+  routeId      Int
+  attractionId Int
+  route        Route      @relation(fields: [routeId], references: [id])
+  attraction   Attraction @relation(fields: [attractionId], references: [id])
+
+  @@id([routeId, attractionId])
+  @@map("route_to_attraction")
 }

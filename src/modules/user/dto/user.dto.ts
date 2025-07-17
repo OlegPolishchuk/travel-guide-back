@@ -1,6 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Roles } from '@prisma/generated/prisma';
-import { Exclude } from 'class-transformer';
 import { IsEmail, IsEnum, IsOptional, MinLength } from 'class-validator';
 
 export class UserDto {
