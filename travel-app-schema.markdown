@@ -5,19 +5,19 @@
 ### 1.1. Экран 1: Главный экран (Main Screen)
 **Описание**: Начальный экран для поиска и фильтрации достопримечательностей. Для авторизованных пользователей отображает сохранённые маршруты.
 **Элементы**:
-- **Поисковая строка**: Поиск по названию достопримечательности.
+- **Поисковая строка**: Поиск по названию достопримечательности (`Attraction.name`).
 - **Фильтры**:
-  - Категория (музей, замок, природа).
-  - Теги (семейный, бесплатный, исторический).
-  - Расстояние (например, "в радиусе 10 км").
+  - Категория (`Category.name`, например, "Музей", "Замок").
+  - Теги (`Tag.name`, например, "для детей", "бесплатный").
+  - Расстояние (на основе `Location.latitude`, `Location.longitude`).
 - **Список достопримечательностей**:
-  - Название (например, "Мирский замок").
-  - Краткое описание.
-  - Средний рейтинг (звёзды, из `Attraction.averageRating`).
-  - Кнопка "Посмотреть на карте".
+  - Название (`Attraction.name`, например, "Мирский замок").
+  - Краткое описание (`Attraction.description`).
+  - Средний рейтинг (`Attraction.averageRating`).
+  - Кнопка "Посмотреть на карте" (переход к карте с `Location`).
 - **Сохранённые маршруты** (для авторизованных пользователей):
-  - Список маршрутов из таблицы `Route` (WHERE `userId = currentUser.id`).
-  - Показывает название маршрута, длительность и среднюю оценку (из `RouteRating`).
+  - Список маршрутов (`Route` WHERE `userId = currentUser.id`).
+  - Название маршрута, длительность (`Route.duration`), средняя оценка (`RouteRating`).
 - **Кнопки**:
   - "Создать маршрут" (переход к экрану создания маршрута).
   - "Открыть карту" (переход к экрану карты).
@@ -34,8 +34,8 @@
 **Описание**: Отображает карту с метками достопримечательностей и маршрутами.
 **Элементы**:
 - **Карта (Яндекс.Карты/Google Maps)**:
-  - Метки для каждой достопримечательности (координаты из `Location.latitude`, `Location.longitude`).
-  - Отображение маршрута, если он выбран (из `Route`).
+  - Метки для достопримечательностей (`Location.latitude`, `Location.longitude`).
+  - Маршрут, если выбран (`Route` через `RouteToAttraction`).
 - **Кнопки**:
   - "Начать навигацию" (запускает маршрут в навигаторе).
   - "Вернуться" (на главный экран или экран маршрута).
@@ -47,37 +47,37 @@
 ### 1.3. Экран 3: Детали достопримечательности (Attraction Details)
 **Описание**: Подробная информация о выбранной достопримечательности.
 **Элементы**:
-- Название (из `Attraction.name`).
-- Галерея фотографий (из `Media.url`).
-- Описание (из `Attraction.description`).
-- Часы работы (из `OperatingHours`).
-- Стоимость входа (из `Attraction.entryFee`).
-- Средний рейтинг и отзывы (из `Review`, с привязкой к `User`).
-- Теги (из `Tag`).
+- Название (`Attraction.name`).
+- Галерея фотографий (`Media.url`, WHERE `type = 'image'`).
+- Описание (`Attraction.description`).
+- Часы работы (`OperatingHours.dayOfWeek`, `openTime`, `closeTime`).
+- Стоимость входа (`Attraction.entryFee`).
+- Средний рейтинг и отзывы (`Review.rating`, `Review.comment`, JOIN с `User.name`).
+- Теги (`Tag.name`).
 - **Кнопки**:
-  - "Добавить в маршрут" (добавляет в новый или существующий маршрут).
+  - "Добавить в маршрут" (добавляет в `RouteToAttraction`).
   - "Посмотреть на карте" (переход к экрану карты).
-  - "Оставить отзыв" (для авторизованных пользователей, создаёт запись в `Review`).
+  - "Оставить отзыв" (создаёт запись в `Review` для авторизованных пользователей).
   - "Вернуться" (на главный экран).
 
 **Навигация**:
 - "Добавить в маршрут" → Экран создания маршрута.
 - "Посмотреть на карте" → Экран карты.
-- "Оставить отзыв" → Форма отзыва (сохраняет в `Review`).
+- "Оставить отзыв" → Форма отзыва.
 - "Вернуться" → Главный экран.
 
 ### 1.4. Экран 4: Создание маршрута (Route Creation)
 **Описание**: Экран для составления маршрута из выбранных достопримечательностей.
 **Элементы**:
 - Поле для ввода названия маршрута (`Route.name`).
-- Список выбранных достопримечательностей (из связи `RouteToAttraction`).
+- Список выбранных достопримечательностей (`RouteToAttraction`, JOIN с `Attraction.name`).
 - Общая длительность (сумма `Attraction.visitDuration`).
-- Общее расстояние (рассчитывается через API навигатора, сохраняется в `Route.distance`).
+- Общее расстояние (`Route.distance`, рассчитывается через API навигатора).
 - Флаг "Сгенерированный маршрут" (`Route.isGenerated`).
 - **Кнопки**:
-  - "Сохранить маршрут" (сохраняет в `Route`, связывает с `userId`).
-  - "Оценить маршрут" (для авторизованных пользователей, создаёт запись в `RouteRating`).
-  - "Посмотреть на карте" (переход к экрану карты с маршрутом).
+  - "Сохранить маршрут" (сохраняет в `Route` с `userId`).
+  - "Оценить маршрут" (создаёт запись в `RouteRating`).
+  - "Посмотреть на карте" (переход к экрану карты).
   - "Вернуться" (на главный экран).
 
 **Навигация**:
@@ -90,7 +90,7 @@
 - Информация о пользователе (`User.name`, `User.email`).
 - Список сохранённых маршрутов (`Route` WHERE `userId = currentUser.id`).
 - Список сгенерированных маршрутов (`Route` WHERE `isGenerated = true`).
-- Средние оценки маршрутов (из `RouteRating`).
+- Средние оценки маршрутов (`RouteRating`).
 - **Кнопки**:
   - "Редактировать профиль" (обновляет `User`).
   - "Выйти" (завершает сессию).
@@ -103,150 +103,451 @@
 
 ## 2. Схема базы данных
 
-### 2.1. Таблицы и поля
-**Таблица `User`**:
-- `id: Int` (PK, автоинкремент)
-- `name: String` (имя пользователя)
-- `email: String` (уникальный, для авторизации)
-- `password: String` (хэшированный пароль)
-- `createdAt: DateTime`
-- `updatedAt: DateTime`
+### 2.1. Подробное описание таблиц
 
-**Таблица `Attraction`**:
-- `id: Int` (PK, автоинкремент)
-- `name: String` (название, например, "Мирский замок")
-- `description: String?` (описание)
-- `categoryId: Int` (FK, ссылка на `Category`)
-- `locationId: Int` (FK, ссылка на `Location`, уникальный)
-- `averageRating: Float?` (средний рейтинг)
-- `visitDuration: Float?` (длительность посещения, в часах)
-- `entryFee: Float?` (стоимость входа)
-- `website: String?` (сайт)
-- `phone: String?` (телефон)
-- `createdAt: DateTime`
-- `updatedAt: DateTime`
+#### Таблица `User`
+**Описание**: Хранит данные зарегистрированных пользователей, которые могут создавать маршруты, оставлять отзывы и оценивать маршруты.
+**Поля**:
+- `id: Int` (PK, автоинкремент) — Уникальный идентификатор пользователя.
+- `name: String` — Имя пользователя (например, "Иван Иванов").
+- `email: String` (уникальный) — Email для авторизации (например, "ivan@example.com").
+- `password: String` — Хэшированный пароль для входа.
+- `routes: Route[]` — Список маршрутов пользователя (связь 1:N через `Route.userId`).
+- `reviews: Review[]` — Список отзывов пользователя (связь 1:N через `Review.userId`).
+- `routeRatings: RouteRating[]` — Список оценок маршрутов пользователя (связь 1:N через `RouteRating.userId`).
+- `createdAt: DateTime` — Дата и время создания записи.
+- `updatedAt: DateTime` — Дата и время последнего обновления.
 
-**Таблица `Location`**:
-- `id: Int` (PK, автоинкремент)
-- `latitude: Float` (широта, для навигатора)
-- `longitude: Float` (долгота, для навигатора)
-- `address: String?` (адрес)
-- `city: String?` (город)
-- `country: String` (по умолчанию "Belarus")
-- `createdAt: DateTime`
-- `updatedAt: DateTime`
+**Связи**:
+- 1:N с `Route` (пользователь создаёт множество маршрутов).
+- 1:N с `Review` (пользователь оставляет множество отзывов).
+- 1:N с `RouteRating` (пользователь оценивает множество маршрутов).
 
-**Таблица `Category`**:
-- `id: Int` (PK, автоинкремент)
-- `name: String` (название категории, например, "Музей")
-- `createdAt: DateTime`
-- `updatedAt: DateTime`
+**Пример данных**:
+```json
+{
+  "id": 1,
+  "name": "Иван Иванов",
+  "email": "ivan@example.com",
+  "password": "$2b$10$hashedPassword",
+  "createdAt": "2025-07-17T10:00:00Z",
+  "updatedAt": "2025-07-17T10:00:00Z"
+}
+```
 
-**Таблица `Media`**:
-- `id: Int` (PK, автоинкремент)
-- `attractionId: Int` (FK, ссылка на `Attraction`)
-- `url: String` (URL фото/видео)
-- `type: String` (тип: "image", "video")
-- `caption: String?` (подпись)
-- `createdAt: DateTime`
-- `updatedAt: DateTime`
+**Использование**:
+- Авторизация (проверка `email` и `password`).
+- Отображение профиля (`name`, `email`).
+- Фильтрация маршрутов и отзывов по `userId`.
 
-**Таблица `Review`**:
-- `id: Int` (PK, автоинкремент)
-- `attractionId: Int` (FK, ссылка на `Attraction`)
-- `userId: Int` (FK, ссылка на `User`, обязательное)
-- `rating: Int` (оценка, 1-5)
-- `comment: String?` (текст отзыва)
-- `createdAt: DateTime`
-- `updatedAt: DateTime`
+#### Таблица `Attraction`
+**Описание**: Хранит информацию о достопримечательностях (например, музеи, замки, парки).
+**Поля**:
+- `id: Int` (PK, автоинкремент) — Уникальный идентификатор.
+- `name: String` — Название (например, "Мирский замок").
+- `description: String?` — Описание достопримечательности.
+- `categoryId: Int` — ID категории (FK, ссылка на `Category`).
+- `locationId: Int` (уникальный) — ID местоположения (FK, ссылка на `Location`).
+- `averageRating: Float?` — Средний рейтинг на основе отзывов (`Review`).
+- `visitDuration: Float?` — Рекомендуемая длительность посещения (в часах).
+- `entryFee: Float?` — Стоимость входа.
+- `website: String?` — Сайт достопримечательности.
+- `phone: String?` — Контактный телефон.
+- `createdAt: DateTime` — Дата создания.
+- `updatedAt: DateTime` — Дата обновления.
+- `category: Category` — Связь с категорией.
+- `location: Location` — Связь с местоположением.
+- `media: Media[]` — Список медиафайлов.
+- `reviews: Review[]` — Список отзывов.
+- `tags: Tag[]` — Список тегов.
+- `operatingHours: OperatingHours[]` — Часы работы.
+- `routes: Route[]` — Список маршрутов, включающих эту достопримечательность.
 
-**Таблица `Tag`**:
-- `id: Int` (PK, автоинкремент)
-- `name: String` (название тега, например, "исторический")
-- `createdAt: DateTime`
-- `updatedAt: DateTime`
+**Связи**:
+- N:1 с `Category` (через `categoryId`).
+- 1:1 с `Location` (через `locationId`).
+- 1:N с `Media`, `Review`, `OperatingHours`.
+- N:N с `Tag` (через `AttractionToTag`).
+- N:N с `Route` (через `RouteToAttraction`).
 
-**Таблица `OperatingHours`**:
-- `id: Int` (PK, автоинкремент)
-- `attractionId: Int` (FK, ссылка на `Attraction`)
-- `dayOfWeek: String` (день недели)
-- `openTime: String?` (время открытия)
-- `closeTime: String?` (время закрытия)
-- `isClosed: Boolean` (закрыто ли)
-- `createdAt: DateTime`
-- `updatedAt: DateTime`
+**Пример данных**:
+```json
+{
+  "id": 1,
+  "name": "Мирский замок",
+  "description": "Исторический замок XVI века, объект ЮНЕСКО.",
+  "categoryId": 1,
+  "locationId": 1,
+  "averageRating": 4.8,
+  "visitDuration": 2.5,
+  "entryFee": 15.0,
+  "website": "http://mirzamak.by",
+  "phone": "+375 1596 12345",
+  "createdAt": "2025-07-17T10:00:00Z",
+  "updatedAt": "2025-07-17T10:00:00Z"
+}
+```
 
-**Таблица `Route`**:
-- `id: Int` (PK, автоинкремент)
-- `name: String` (название маршрута)
-- `description: String?` (описание)
-- `userId: Int` (FK, ссылка на `User`, обязательное)
-- `isGenerated: Boolean` (флаг, сгенерирован ли маршрут системой)
-- `duration: Float?` (длительность, часы)
-- `distance: Float?` (расстояние, км)
-- `createdAt: DateTime`
-- `updatedAt: DateTime`
+**Использование**:
+- Отображение на главном экране и экране деталей.
+- Фильтрация по категории и тегам.
+- Расчёт длительности маршрута (`visitDuration`).
 
-**Таблица `RouteRating`**:
-- `id: Int` (PK, автоинкремент)
-- `routeId: Int` (FK, ссылка на `Route`)
-- `userId: Int` (FK, ссылка на `User`)
-- `rating: Int` (оценка, 1-5)
-- `comment: String?` (комментарий к оценке)
-- `createdAt: DateTime`
-- `updatedAt: DateTime`
+#### Таблица `Location`
+**Описание**: Хранит географические координаты и адрес достопримечательности для отображения на карте и навигации.
+**Поля**:
+- `id: Int` (PK, автоинкремент) — Уникальный идентификатор.
+- `latitude: Float` — Широта (для навигатора).
+- `longitude: Float` — Долгота (для навигатора).
+- `address: String?` — Адрес (например, "ул. Замковая, 2, Мир").
+- `city: String?` — Город (например, "Мир").
+- `country: String` — Страна (по умолчанию "Belarus").
+- `createdAt: DateTime` — Дата создания.
+- `updatedAt: DateTime` — Дата обновления.
+- `attraction: Attraction?` — Связь с достопримечательностью.
 
-### 2.2. Связи между таблицами
-- **User ↔ Route**: 1:N (`userId` в `Route` ссылается на `id` в `User`).
-- **User ↔ Review**: 1:N (`userId` в `Review` ссылается на `id` в `User`).
-- **User ↔ RouteRating**: 1:N (`userId` в `RouteRating` ссылается на `id` в `User`).
-- **Attraction ↔ Location**: 1:1 (`locationId` в `Attraction` ссылается на `id` в `Location`).
-- **Attraction ↔ Category**: N:1 (`categoryId` в `Attraction` ссылается на `id` в `Category`).
-- **Attraction ↔ Media**: 1:N (`attractionId` в `Media` ссылается на `id` в `Attraction`).
-- **Attraction ↔ Review**: 1:N (`attractionId` в `Review` ссылается на `id` в `Attraction`).
-- **Attraction ↔ OperatingHours**: 1:N (`attractionId` в `OperatingHours` ссылается на `id` в `Attraction`).
-- **Attraction ↔ Tag**: N:N (через промежуточную таблицу `AttractionToTag`).
-- **Attraction ↔ Route**: N:N (через промежуточную таблицу `RouteToAttraction`).
-- **Route ↔ RouteRating**: 1:N (`routeId` в `RouteRating` ссылается на `id` в `Route`).
+**Связи**:
+- 1:1 с `Attraction` (через `locationId`).
+
+**Пример данных**:
+```json
+{
+  "id": 1,
+  "latitude": 53.4513,
+  "longitude": 26.4730,
+  "address": "ул. Замковая, 2",
+  "city": "Мир",
+  "country": "Belarus",
+  "createdAt": "2025-07-17T10:00:00Z",
+  "updatedAt": "2025-07-17T10:00:00Z"
+}
+```
+
+**Использование**:
+- Построение меток на карте (`latitude`, `longitude`).
+- Расчёт расстояния для фильтрации и маршрутов (через API Яндекс.Карт/Google Maps).
+
+#### Таблица `Category`
+**Описание**: Хранит категории достопримечательностей для основной классификации (например, "Музей", "Замок").
+**Поля**:
+- `id: Int` (PK, автоинкремент) — Уникальный идентификатор.
+- `name: String` — Название категории (например, "Музей").
+- `attractions: Attraction[]` — Список достопримечательностей.
+- `createdAt: DateTime` — Дата создания.
+- `updatedAt: DateTime` — Дата обновления.
+
+**Связи**:
+- 1:N с `Attraction` (через `categoryId`).
+
+**Пример данных**:
+```json
+{
+  "id": 1,
+  "name": "Замок",
+  "createdAt": "2025-07-17T10:00:00Z",
+  "updatedAt": "2025-07-17T10:00:00Z"
+}
+```
+
+**Использование**:
+- Фильтрация на главном экране (например, "все замки").
+- Создание маршрутов по категориям (например, "Тур по музеям").
+
+#### Таблица `Media`
+**Описание**: Хранит медиафайлы (фото, видео) для достопримечательностей.
+**Поля**:
+- `id: Int` (PK, автоинкремент) — Уникальный идентификатор.
+- `attractionId: Int` — ID достопримечательности (FK).
+- `url: String` — URL медиафайла.
+- `type: String` — Тип ("image" или "video").
+- `caption: String?` — Подпись к файлу.
+- `createdAt: DateTime` — Дата создания.
+- `updatedAt: DateTime` — Дата обновления.
+- `attraction: Attraction` — Связь с достопримечательностью.
+
+**Связи**:
+- 1:N с `Attraction` (через `attractionId`).
+
+**Пример данных**:
+```json
+{
+  "id": 1,
+  "attractionId": 1,
+  "url": "http://mirzamak.by/photo1.jpg",
+  "type": "image",
+  "caption": "Главный вход в замок",
+  "createdAt": "2025-07-17T10:00:00Z",
+  "updatedAt": "2025-07-17T10:00:00Z"
+}
+```
+
+**Использование**:
+- Отображение галереи на экране деталей (`type = 'image'`).
+- Воспроизведение видео, если `type = 'video'`.
+
+#### Таблица `Review`
+**Описание**: Хранит отзывы пользователей о достопримечательностях.
+**Поля**:
+- `id: Int` (PK, автоинкремент) — Уникальный идентификатор.
+- `attractionId: Int` — ID достопримечательности (FK).
+- `userId: Int` — ID пользователя (FK, обязательное).
+- `rating: Int` — Оценка (1-5).
+- `comment: String?` — Текст отзыва.
+- `createdAt: DateTime` — Дата создания.
+- `updatedAt: DateTime` — Дата обновления.
+- `attraction: Attraction` — Связь с достопримечательностью.
+- `user: User` — Связь с пользователем.
+
+**Связи**:
+- 1:N с `Attraction` (через `attractionId`).
+- 1:N с `User` (через `userId`).
+
+**Пример данных**:
+```json
+{
+  "id": 1,
+  "attractionId": 1,
+  "userId": 1,
+  "rating": 5,
+  "comment": "Фантастическое место!",
+  "createdAt": "2025-07-17T10:00:00Z",
+  "updatedAt": "2025-07-17T10:00:00Z"
+}
+```
+
+**Использование**:
+- Отображение отзывов на экране деталей.
+- Расчёт `Attraction.averageRating` на основе `rating`.
+
+#### Таблица `Tag`
+**Описание**: Хранит теги для гибкой классификации достопримечательностей (например, "исторический", "для детей").
+**Поля**:
+- `id: Int` (PK, автоинкремент) — Уникальный идентификатор.
+- `name: String` — Название тега (например, "ЮНЕСКО").
+- `attractions: Attraction[]` — Список достопримечательностей (N:N).
+- `createdAt: DateTime` — Дата создания.
+- `updatedAt: DateTime` — Дата обновления.
+
+**Связи**:
+- N:N с `Attraction` (через `AttractionToTag`).
+
+**Пример данных**:
+```json
+{
+  "id": 1,
+  "name": "ЮНЕСКО",
+  "createdAt": "2025-07-17T10:00:00Z",
+  "updatedAt": "2025-07-17T10:00:00Z"
+}
+```
+
+**Использование**:
+- Фильтрация на главном экране (например, "для семей").
+- Генерация тематических маршрутов (например, "Объекты ЮНЕСКО").
+
+#### Таблица `OperatingHours`
+**Описание**: Хранит часы работы достопримечательностей.
+**Поля**:
+- `id: Int` (PK, автоинкремент) — Уникальный идентификатор.
+- `attractionId: Int` — ID достопримечательности (FK).
+- `dayOfWeek: String` — День недели (например, "Monday").
+- `openTime: String?` — Время открытия (например, "09:00").
+- `closeTime: String?` — Время закрытия (например, "17:00").
+- `isClosed: Boolean` — Закрыто ли в этот день.
+- `createdAt: DateTime` — Дата создания.
+- `updatedAt: DateTime` — Дата обновления.
+- `attraction: Attraction` — Связь с достопримечательностью.
+
+**Связи**:
+- 1:N с `Attraction` (через `attractionId`).
+
+**Пример данных**:
+```json
+{
+  "id": 1,
+  "attractionId": 1,
+  "dayOfWeek": "Monday",
+  "openTime": "09:00",
+  "closeTime": "17:00",
+  "isClosed": false,
+  "createdAt": "2025-07-17T10:00:00Z",
+  "updatedAt": "2025-07-17T10:00:00Z"
+}
+```
+
+**Использование**:
+- Отображение часов работы на экране деталей.
+- Проверка доступности при планировании маршрута.
+
+#### Таблица `Route`
+**Описание**: Хранит маршруты, созданные пользователями или сгенерированные системой.
+**Поля**:
+- `id: Int` (PK, автоинкремент) — Уникальный идентификатор.
+- `name: String` — Название маршрута (например, "Тур по замкам").
+- `description: String?` — Описание маршрута.
+- `userId: Int` — ID пользователя (FK, обязательное).
+- `isGenerated: Boolean` — Сгенерирован ли маршрут системой.
+- `duration: Float?` — Общая длительность (в часах).
+- `distance: Float?` — Общее расстояние (в км).
+- `createdAt: DateTime` — Дата создания.
+- `updatedAt: DateTime` — Дата обновления.
+- `user: User` — Связь с пользователем.
+- `attractions: Attraction[]` — Список достопримечательностей (N:N).
+- `ratings: RouteRating[]` — Список оценок маршрута.
+
+**Связи**:
+- 1:N с `User` (через `userId`).
+- N:N с `Attraction` (через `RouteToAttraction`).
+- 1:N с `RouteRating` (через `routeId`).
+
+**Пример данных**:
+```json
+{
+  "id": 1,
+  "name": "Тур по замкам",
+  "description": "Посещение Мирского и Несвижского замков",
+  "userId": 1,
+  "isGenerated": false,
+  "duration": 5.0,
+  "distance": 120.0,
+  "createdAt": "2025-07-17T10:00:00Z",
+  "updatedAt": "2025-07-17T10:00:00Z"
+}
+```
+
+**Использование**:
+- Отображение маршрутов в профиле и на главном экране.
+- Построение маршрута на карте (через `RouteToAttraction` и `Location`).
+
+#### Таблица `RouteRating`
+**Описание**: Хранит оценки маршрутов, поставленные пользователями.
+**Поля**:
+- `id: Int` (PK, автоинкремент) — Уникальный идентификатор.
+- `routeId: Int` — ID маршрута (FK).
+- `userId: Int` — ID пользователя (FK).
+- `rating: Int` — Оценка (1-5).
+- `comment: String?` — Комментарий к оценке.
+- `createdAt: DateTime` — Дата создания.
+- `updatedAt: DateTime` — Дата обновления.
+- `route: Route` — Связь с маршрутом.
+- `user: User` — Связь с пользователем.
+
+**Связи**:
+- 1:N с `Route` (через `routeId`).
+- 1:N с `User` (через `userId`).
+
+**Пример данных**:
+```json
+{
+  "id": 1,
+  "routeId": 1,
+  "userId": 1,
+  "rating": 4,
+  "comment": "Отличный маршрут, но дорога длинная",
+  "createdAt": "2025-07-17T10:00:00Z",
+  "updatedAt": "2025-07-17T10:00:00Z"
+}
+```
+
+**Использование**:
+- Отображение оценок маршрутов в профиле и на экране маршрута.
+- Расчёт средней оценки маршрута.
+
+#### Таблица `AttractionToTag`
+**Описание**: Промежуточная таблица для связи многие-ко-многим между `Attraction` и `Tag`.
+**Поля**:
+- `attractionId: Int` — ID достопримечательности (FK).
+- `tagId: Int` — ID тега (FK).
+- `attraction: Attraction` — Связь с достопримечательностью.
+- `tag: Tag` — Связь с тегом.
+
+**Связи**:
+- N:N между `Attraction` и `Tag`.
+
+**Пример данных**:
+```json
+{
+  "attractionId": 1,
+  "tagId": 1
+}
+```
+
+**Использование**:
+- Фильтрация достопримечательностей по тегам.
+- Генерация маршрутов по тегам (например, "ЮНЕСКО").
+
+#### Таблица `RouteToAttraction`
+**Описание**: Промежуточная таблица для связи многие-ко-многим между `Route` и `Attraction`.
+**Поля**:
+- `routeId: Int` — ID маршрута (FK).
+- `attractionId: Int` — ID достопримечательности (FK).
+- `route: Route` — Связь с маршрутом.
+- `attraction: Attraction` — Связь с достопримечательностью.
+
+**Связи**:
+- N:N между `Route` и `Attraction`.
+
+**Пример данных**:
+```json
+{
+  "routeId": 1,
+  "attractionId": 1
+}
+```
+
+**Использование**:
+- Формирование списка достопримечательностей в маршруте.
+- Построение маршрута на карте (через `Location`).
 
 ## 3. Взаимодействие UI и базы данных
 - **Главный экран**:
-  - Список достопримечательностей: Запрос к `Attraction` (поля: `name`, `description`, `averageRating`) с JOIN на `Category` и `Tag` для фильтров.
-  - Сохранённые маршруты: Запрос к `Route` (WHERE `userId = currentUser.id`) с JOIN на `RouteRating` для средней оценки.
-  - Фильтры: Используют `Category.name`, `Tag.name`, и `Location.latitude`, `Location.longitude` для расстояния.
+  - Достопримечательности: Запрос к `Attraction` (поля: `name`, `description`, `averageRating`) с JOIN на `Category`, `Tag`, `Location`.
+  - Сохранённые маршруты: `Route` (WHERE `userId = currentUser.id`) с JOIN на `RouteRating`.
+  - Пример запроса:
+    ```javascript
+    const attractions = await prisma.attraction.findMany({
+      where: { tags: { some: { name: "для семей" } } },
+      include: { category: true, location: true, tags: true },
+    });
+    ```
 - **Экран карты**:
-  - Метки: Координаты из `Location.latitude`, `Location.longitude`.
-  - Маршрут: Координаты из `Location` для достопримечательностей, связанных с `Route` через `RouteToAttraction`.
+  - Метки: `Location.latitude`, `Location.longitude`.
+  - Маршрут: `RouteToAttraction` с JOIN на `Attraction` и `Location`.
 - **Детали достопримечательности**:
   - Информация: `Attraction.name`, `description`, `entryFee`, `averageRating`.
   - Фото: `Media.url` (WHERE `type = 'image'`).
-  - Часы работы: `OperatingHours.dayOfWeek`, `openTime`, `closeTime`, `isClosed`.
-  - Отзывы: `Review.rating`, `Review.comment`, JOIN с `User.name` для отображения имени автора.
-  - Теги: `Tag.name` (через связь N:N).
+  - Отзывы: `Review.rating`, `Review.comment`, JOIN с `User.name`.
+  - Пример запроса:
+    ```javascript
+    const attraction = await prisma.attraction.findUnique({
+      where: { id: attractionId },
+      include: { media: true, reviews: { include: { user: true } }, operatingHours: true, tags: true },
+    });
+    ```
 - **Создание маршрута**:
-  - Список достопримечательностей: `Attraction.name` из связи `RouteToAttraction`.
+  - Список: `RouteToAttraction` с JOIN на `Attraction`.
   - Длительность: Сумма `Attraction.visitDuration`.
-  - Расстояние: Рассчитывается через API навигатора, сохраняется в `Route.distance`.
-  - Сохранение: Создаёт запись в `Route` (с `userId` и `isGenerated`), связи в `RouteToAttraction`.
-  - Оценка: Создаёт запись в `RouteRating` (с `userId`, `routeId`, `rating`).
+  - Сохранение: Создание записи в `Route` и `RouteToAttraction`.
 - **Профиль пользователя**:
   - Информация: `User.name`, `User.email`.
-  - Маршруты: Запрос к `Route` (WHERE `userId = currentUser.id`, с фильтром `isGenerated` для разделения).
-  - Оценки: Средняя оценка из `RouteRating` для каждого маршрута.
+  - Маршруты: `Route` (WHERE `userId = currentUser.id`, фильтр по `isGenerated`).
+  - Пример запроса:
+    ```javascript
+    const userRoutes = await prisma.route.findMany({
+      where: { userId: currentUserId },
+      include: { attractions: true, ratings: { include: { user: true } } },
+    });
+    ```
 
 ## 4. Примечания
 - **Авторизация**:
-  - Используйте `User.email` и `User.password` для входа.
-  - Храните сессии (например, JWT) для проверки `currentUser.id`.
+  - Используйте `User.email` и `User.password` для входа (JWT для сессий).
 - **Интеграция с навигатором**:
-  - Передавайте `Location.latitude` и `Location.longitude` в API Яндекс.Карт (https://yandex.ru/dev/maps/) или Google Maps (https://developers.google.com/maps/documentation/directions).
-  - Маршруты строятся через API маршрутизации с координатами из `Location` для достопримечательностей в `RouteToAttraction`.
-- **Сгенерированные маршруты**:
-  - Поле `Route.isGenerated = true` для маршрутов, созданных системой (например, по алгоритму на основе `Category`, `Tag`, или `visitDuration`).
-  - Пользователь может оценить сгенерированный маршрут в `RouteRating`.
+  - Передавайте `Location.latitude`, `Location.longitude` в API Яндекс.Карт (https://yandex.ru/dev/maps/) или Google Maps (https://developers.google.com/maps/documentation/directions).
+  - Сохраняйте расстояние в `Route.distance`.
 - **Оптимизация**:
-  - Кэшируйте данные `Attraction`, `Location`, и популярные маршруты (`Route`) в Redis.
-  - Используйте индексы на `User.email`, `Route.userId`, и `Location.latitude`, `Location.longitude` для быстрого поиска.
+  - Индексы на `User.email`, `Route.userId`, `Location.latitude`, `Location.longitude`.
+  - Кэширование популярных достопримечательностей (`Attraction`) и маршрутов (`Route`).
 - **Расширяемость**:
-  - Добавьте таблицу `Translation` для локализации (`name`, `description` на разных языках).
-  - Для рекомендаций маршрутов используйте алгоритмы на основе `Tag`, `Review.rating`, и `RouteRating`.
+  - Добавьте таблицу `Translation` для локализации.
+  - Реализуйте рекомендации маршрутов на основе `Tag` и `Review.rating`.

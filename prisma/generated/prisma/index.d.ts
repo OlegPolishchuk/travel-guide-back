@@ -86,11 +86,31 @@ export namespace $Enums {
 
 export type Roles = (typeof Roles)[keyof typeof Roles]
 
+
+export const TouristPlaceCategory: {
+  NATURE: 'NATURE',
+  CULTURAL_HISTORICAL: 'CULTURAL_HISTORICAL',
+  ENTERTAINMENT_PARK: 'ENTERTAINMENT_PARK',
+  GASTRONOMY: 'GASTRONOMY',
+  BEACH_RESORT: 'BEACH_RESORT',
+  SKI_RESORT: 'SKI_RESORT',
+  RELIGIOUS: 'RELIGIOUS',
+  URBAN: 'URBAN',
+  ADVENTURE: 'ADVENTURE',
+  ECO_AGRO: 'ECO_AGRO'
+};
+
+export type TouristPlaceCategory = (typeof TouristPlaceCategory)[keyof typeof TouristPlaceCategory]
+
 }
 
 export type Roles = $Enums.Roles
 
 export const Roles: typeof $Enums.Roles
+
+export type TouristPlaceCategory = $Enums.TouristPlaceCategory
+
+export const TouristPlaceCategory: typeof $Enums.TouristPlaceCategory
 
 /**
  * ##  Prisma Client ʲˢ
@@ -5881,14 +5901,14 @@ export namespace Prisma {
 
   export type CategoryMinAggregateOutputType = {
     id: number | null
-    name: string | null
+    name: $Enums.TouristPlaceCategory | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
   export type CategoryMaxAggregateOutputType = {
     id: number | null
-    name: string | null
+    name: $Enums.TouristPlaceCategory | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -6020,7 +6040,7 @@ export namespace Prisma {
 
   export type CategoryGroupByOutputType = {
     id: number
-    name: string
+    name: $Enums.TouristPlaceCategory
     createdAt: Date
     updatedAt: Date
     _count: CategoryCountAggregateOutputType | null
@@ -6089,7 +6109,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      name: string
+      name: $Enums.TouristPlaceCategory
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["category"]>
@@ -6517,7 +6537,7 @@ export namespace Prisma {
    */
   interface CategoryFieldRefs {
     readonly id: FieldRef<"Category", 'Int'>
-    readonly name: FieldRef<"Category", 'String'>
+    readonly name: FieldRef<"Category", 'TouristPlaceCategory'>
     readonly createdAt: FieldRef<"Category", 'DateTime'>
     readonly updatedAt: FieldRef<"Category", 'DateTime'>
   }
@@ -16226,6 +16246,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'TouristPlaceCategory'
+   */
+  export type EnumTouristPlaceCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TouristPlaceCategory'>
+    
+
+
+  /**
+   * Reference to a field of type 'TouristPlaceCategory[]'
+   */
+  export type ListEnumTouristPlaceCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TouristPlaceCategory[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Boolean'
    */
   export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
@@ -16504,7 +16538,7 @@ export namespace Prisma {
     OR?: CategoryWhereInput[]
     NOT?: CategoryWhereInput | CategoryWhereInput[]
     id?: IntFilter<"Category"> | number
-    name?: StringFilter<"Category"> | string
+    name?: EnumTouristPlaceCategoryFilter<"Category"> | $Enums.TouristPlaceCategory
     createdAt?: DateTimeFilter<"Category"> | Date | string
     updatedAt?: DateTimeFilter<"Category"> | Date | string
     attractions?: AttractionListRelationFilter
@@ -16523,7 +16557,7 @@ export namespace Prisma {
     AND?: CategoryWhereInput | CategoryWhereInput[]
     OR?: CategoryWhereInput[]
     NOT?: CategoryWhereInput | CategoryWhereInput[]
-    name?: StringFilter<"Category"> | string
+    name?: EnumTouristPlaceCategoryFilter<"Category"> | $Enums.TouristPlaceCategory
     createdAt?: DateTimeFilter<"Category"> | Date | string
     updatedAt?: DateTimeFilter<"Category"> | Date | string
     attractions?: AttractionListRelationFilter
@@ -16546,7 +16580,7 @@ export namespace Prisma {
     OR?: CategoryScalarWhereWithAggregatesInput[]
     NOT?: CategoryScalarWhereWithAggregatesInput | CategoryScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Category"> | number
-    name?: StringWithAggregatesFilter<"Category"> | string
+    name?: EnumTouristPlaceCategoryWithAggregatesFilter<"Category"> | $Enums.TouristPlaceCategory
     createdAt?: DateTimeWithAggregatesFilter<"Category"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Category"> | Date | string
   }
@@ -17359,7 +17393,7 @@ export namespace Prisma {
   }
 
   export type CategoryCreateInput = {
-    name: string
+    name?: $Enums.TouristPlaceCategory
     createdAt?: Date | string
     updatedAt?: Date | string
     attractions?: AttractionCreateNestedManyWithoutCategoryInput
@@ -17367,14 +17401,14 @@ export namespace Prisma {
 
   export type CategoryUncheckedCreateInput = {
     id?: number
-    name: string
+    name?: $Enums.TouristPlaceCategory
     createdAt?: Date | string
     updatedAt?: Date | string
     attractions?: AttractionUncheckedCreateNestedManyWithoutCategoryInput
   }
 
   export type CategoryUpdateInput = {
-    name?: StringFieldUpdateOperationsInput | string
+    name?: EnumTouristPlaceCategoryFieldUpdateOperationsInput | $Enums.TouristPlaceCategory
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     attractions?: AttractionUpdateManyWithoutCategoryNestedInput
@@ -17382,7 +17416,7 @@ export namespace Prisma {
 
   export type CategoryUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
+    name?: EnumTouristPlaceCategoryFieldUpdateOperationsInput | $Enums.TouristPlaceCategory
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     attractions?: AttractionUncheckedUpdateManyWithoutCategoryNestedInput
@@ -17390,20 +17424,20 @@ export namespace Prisma {
 
   export type CategoryCreateManyInput = {
     id?: number
-    name: string
+    name?: $Enums.TouristPlaceCategory
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type CategoryUpdateManyMutationInput = {
-    name?: StringFieldUpdateOperationsInput | string
+    name?: EnumTouristPlaceCategoryFieldUpdateOperationsInput | $Enums.TouristPlaceCategory
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CategoryUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
+    name?: EnumTouristPlaceCategoryFieldUpdateOperationsInput | $Enums.TouristPlaceCategory
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -18321,6 +18355,13 @@ export namespace Prisma {
     _max?: NestedFloatFilter<$PrismaModel>
   }
 
+  export type EnumTouristPlaceCategoryFilter<$PrismaModel = never> = {
+    equals?: $Enums.TouristPlaceCategory | EnumTouristPlaceCategoryFieldRefInput<$PrismaModel>
+    in?: $Enums.TouristPlaceCategory[] | ListEnumTouristPlaceCategoryFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TouristPlaceCategory[] | ListEnumTouristPlaceCategoryFieldRefInput<$PrismaModel>
+    not?: NestedEnumTouristPlaceCategoryFilter<$PrismaModel> | $Enums.TouristPlaceCategory
+  }
+
   export type AttractionListRelationFilter = {
     every?: AttractionWhereInput
     some?: AttractionWhereInput
@@ -18358,6 +18399,16 @@ export namespace Prisma {
 
   export type CategorySumOrderByAggregateInput = {
     id?: SortOrder
+  }
+
+  export type EnumTouristPlaceCategoryWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TouristPlaceCategory | EnumTouristPlaceCategoryFieldRefInput<$PrismaModel>
+    in?: $Enums.TouristPlaceCategory[] | ListEnumTouristPlaceCategoryFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TouristPlaceCategory[] | ListEnumTouristPlaceCategoryFieldRefInput<$PrismaModel>
+    not?: NestedEnumTouristPlaceCategoryWithAggregatesFilter<$PrismaModel> | $Enums.TouristPlaceCategory
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumTouristPlaceCategoryFilter<$PrismaModel>
+    _max?: NestedEnumTouristPlaceCategoryFilter<$PrismaModel>
   }
 
   export type AttractionScalarRelationFilter = {
@@ -19223,6 +19274,10 @@ export namespace Prisma {
     connect?: AttractionWhereUniqueInput | AttractionWhereUniqueInput[]
   }
 
+  export type EnumTouristPlaceCategoryFieldUpdateOperationsInput = {
+    set?: $Enums.TouristPlaceCategory
+  }
+
   export type AttractionUpdateManyWithoutCategoryNestedInput = {
     create?: XOR<AttractionCreateWithoutCategoryInput, AttractionUncheckedCreateWithoutCategoryInput> | AttractionCreateWithoutCategoryInput[] | AttractionUncheckedCreateWithoutCategoryInput[]
     connectOrCreate?: AttractionCreateOrConnectWithoutCategoryInput | AttractionCreateOrConnectWithoutCategoryInput[]
@@ -19807,6 +19862,23 @@ export namespace Prisma {
     _max?: NestedFloatFilter<$PrismaModel>
   }
 
+  export type NestedEnumTouristPlaceCategoryFilter<$PrismaModel = never> = {
+    equals?: $Enums.TouristPlaceCategory | EnumTouristPlaceCategoryFieldRefInput<$PrismaModel>
+    in?: $Enums.TouristPlaceCategory[] | ListEnumTouristPlaceCategoryFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TouristPlaceCategory[] | ListEnumTouristPlaceCategoryFieldRefInput<$PrismaModel>
+    not?: NestedEnumTouristPlaceCategoryFilter<$PrismaModel> | $Enums.TouristPlaceCategory
+  }
+
+  export type NestedEnumTouristPlaceCategoryWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TouristPlaceCategory | EnumTouristPlaceCategoryFieldRefInput<$PrismaModel>
+    in?: $Enums.TouristPlaceCategory[] | ListEnumTouristPlaceCategoryFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TouristPlaceCategory[] | ListEnumTouristPlaceCategoryFieldRefInput<$PrismaModel>
+    not?: NestedEnumTouristPlaceCategoryWithAggregatesFilter<$PrismaModel> | $Enums.TouristPlaceCategory
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumTouristPlaceCategoryFilter<$PrismaModel>
+    _max?: NestedEnumTouristPlaceCategoryFilter<$PrismaModel>
+  }
+
   export type NestedBoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
@@ -20001,14 +20073,14 @@ export namespace Prisma {
   }
 
   export type CategoryCreateWithoutAttractionsInput = {
-    name: string
+    name?: $Enums.TouristPlaceCategory
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type CategoryUncheckedCreateWithoutAttractionsInput = {
     id?: number
-    name: string
+    name?: $Enums.TouristPlaceCategory
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -20227,14 +20299,14 @@ export namespace Prisma {
   }
 
   export type CategoryUpdateWithoutAttractionsInput = {
-    name?: StringFieldUpdateOperationsInput | string
+    name?: EnumTouristPlaceCategoryFieldUpdateOperationsInput | $Enums.TouristPlaceCategory
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CategoryUncheckedUpdateWithoutAttractionsInput = {
     id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
+    name?: EnumTouristPlaceCategoryFieldUpdateOperationsInput | $Enums.TouristPlaceCategory
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

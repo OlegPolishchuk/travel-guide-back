@@ -11,7 +11,6 @@ export class UserDto {
   @IsEmail()
   email: string;
 
-  @Exclude()
   @MinLength(3)
   password: string;
 

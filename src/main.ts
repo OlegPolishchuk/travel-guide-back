@@ -46,7 +46,12 @@ async function bootstrap() {
 
   app.use(passport.initialize());
   app.use(passport.session());
-  app.useGlobalPipes(new ValidationPipe());
+  app.useGlobalPipes(
+    new ValidationPipe({
+      transform: true,
+      whitelist: true,
+    }),
+  );
 
   const openApiConfig = new DocumentBuilder()
     .setTitle('Travel-Guide api')

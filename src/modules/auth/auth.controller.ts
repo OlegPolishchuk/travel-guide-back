@@ -69,6 +69,7 @@ export class AuthController {
   })
   @ApiResponse({ status: 404, description: 'User not found' })
   @UseGuards(LocalGuard)
+  @HttpCode(200)
   @Post('login')
   async login(
     @Body() createUserDto: CreateUserDto,
