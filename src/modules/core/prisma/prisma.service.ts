@@ -1,5 +1,5 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
-import { PrismaClient } from '@prisma/generated/prisma';
+import { PrismaClient } from '@prisma/client';
 import * as bcrypt from 'bcrypt';
 
 import * as attractionsData from '../../../../mock-data/attractions_data.json';

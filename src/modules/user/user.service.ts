@@ -1,5 +1,4 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
-import { Prisma } from '@prisma/generated/prisma';
 
 import { DEFAULT_LIMIT, PaginationDto } from '@/src/dto/pagination.dto';
 import { DB_ERROR_MESSAGE } from '@/src/modules/admin/users/constants/error-messages';
@@ -8,6 +7,7 @@ import { UserDto } from '@/src/modules/user/dto/user.dto';
 import { paginate } from '@/src/utils/paginate.utils';
 import UserCreateInput = Prisma.UserCreateInput;
 import UserUpdateInput = Prisma.UserUpdateInput;
+import { Prisma } from '@prisma/client';
 
 const USER_FIELDS_WITHOUT_PASS = {
   email: true,

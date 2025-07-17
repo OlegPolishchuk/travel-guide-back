@@ -10,7 +10,7 @@ import {
   Query,
 } from '@nestjs/common';
 import { ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { Roles } from '@prisma/generated/prisma';
+import { Roles } from '@prisma/client';
 
 import { RolesDecorator } from '@/src/decorators/roles.decorator';
 import { ListResponseDto, PaginationDto } from '@/src/dto/pagination.dto';

@@ -1,9 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import { Prisma } from '@prisma/generated/prisma';
 
 import { PrismaService } from '@/src/modules/core/prisma/prisma.service';
 import CategoryCreateInput = Prisma.CategoryCreateInput;
 import CategoryUpdateInput = Prisma.CategoryUpdateInput;
+import { Prisma } from '@prisma/client';
+
 import { PaginationDto } from '@/src/dto/pagination.dto';
 import { paginate } from '@/src/utils/paginate.utils';
 

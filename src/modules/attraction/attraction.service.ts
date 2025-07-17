@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { Prisma } from '@prisma/generated/prisma';
 
 import { PaginationDto } from '@/src/dto/pagination.dto';
 import { PrismaService } from '@/src/modules/core/prisma/prisma.service';
 import { paginate } from '@/src/utils/paginate.utils';
 import AttractionUpdateInput = Prisma.AttractionUpdateInput;
 import AttractionCreateInput = Prisma.AttractionCreateInput;
+import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class AttractionService {
