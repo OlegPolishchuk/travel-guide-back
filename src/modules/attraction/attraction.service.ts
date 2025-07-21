@@ -11,8 +11,12 @@ import { Prisma } from '@prisma/client';
 export class AttractionService {
   constructor(private prismaService: PrismaService) {}
 
-  findAll(paginationDto: PaginationDto) {
-    return paginate(this.prismaService.attraction, paginationDto);
+  // findAll(paginationDto: PaginationDto) {
+  //   return paginate(this.prismaService.attraction, paginationDto);
+  // }
+
+  findAll() {
+    return paginate(this.prismaService.attraction, { limit: null, page: null });
   }
 
   findOne(id: number) {

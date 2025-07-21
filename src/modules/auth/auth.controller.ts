@@ -77,6 +77,9 @@ export class AuthController {
   ): Promise<UserDto> {
     const user = await this.authService.login(createUserDto);
 
+    console.group('LOGIN Controller');
+    console.log('USER =>', user);
+    console.groupEnd();
     session.user_id = user.id;
 
     return user;
@@ -92,7 +95,9 @@ export class AuthController {
   @ApiResponse({ status: 401, description: 'Unauthorized' })
   @Get('me')
   getMe(@Session() session: Session) {
+    console.group('ME Controller');
     console.log('session =>', session);
+    console.groupEnd();
 
     return this.authService.getUser(session.user_id);
   }

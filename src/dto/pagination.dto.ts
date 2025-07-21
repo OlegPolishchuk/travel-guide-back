@@ -9,13 +9,13 @@ export class PaginationDto {
   @IsOptional()
   @Type(() => Number)
   @IsPositive()
-  limit?: number = 10;
+  limit?: number | null;
 
   @ApiProperty({ required: false, default: 1 })
   @IsOptional()
   @Type(() => Number)
   @Min(1)
-  page?: number = 1;
+  page?: number | null;
 
   @ApiProperty({ required: false })
   @IsOptional()

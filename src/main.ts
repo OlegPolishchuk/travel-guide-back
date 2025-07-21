@@ -38,7 +38,7 @@ async function bootstrap() {
         secure: config.get('NODE_ENV') === 'production',
         httpOnly: true,
         sameSite: 'lax',
-        maxAge: 1000 * 60 * 60 * 24,
+        maxAge: 1000 * 60 * 60 * 24, // 24 часа ы
       },
       store: redisStore,
     }),

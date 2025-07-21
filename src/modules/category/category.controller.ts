@@ -19,6 +19,9 @@ export class CategoryController {
   })
   @Get()
   findAll(@Query() paginationDto: PaginationDto) {
+    console.group('CATEGORY CONTROLLER');
+
+    console.groupEnd();
     return this.categoryService.findMany(paginationDto);
   }
 

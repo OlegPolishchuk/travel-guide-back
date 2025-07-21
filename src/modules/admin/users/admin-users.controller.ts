@@ -38,6 +38,9 @@ export class AdminUsersController {
   @ApiResponse({ status: 401, description: 'Unauthorized' })
   @Get()
   findAll(@Query() paginationDto: PaginationDto) {
+    console.group('ADMIN USERS CONTROLLER');
+    console.log('USERS');
+    console.groupEnd();
     return this.usersService.findAll(paginationDto);
   }
 
